@@ -1,0 +1,2 @@
+class InvalidPerPageError < StandardError
+end

@@ -1,0 +1,2 @@
+class InvalidMagTypeError < StandardError
+end
