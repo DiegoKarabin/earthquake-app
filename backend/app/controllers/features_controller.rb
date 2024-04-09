@@ -4,18 +4,18 @@ class FeaturesController < ApplicationController
   rescue_from InvalidPerPageError, with: :render_bad_request
   rescue_from InvalidMagTypeError, with: :render_bad_request
 
-  # GET /features
+  # GET /api/features
   def index
     per_page = validate_per_page(params[:per_page])
     mag_type = validate_mag_type(params[:mag_type])
 
-    @pagy, @records = pagy(
+    @pagy, @features = pagy(
       fetch_features(mag_type),
       page: params[:page],
       items: per_page
     )
 
-    render json: { data: @records, pagination: pagination_info(@pagy) }
+    render json: { data: @features, pagination: pagination_info(@pagy) }
   end
 
   private

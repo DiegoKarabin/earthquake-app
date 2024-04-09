@@ -1,6 +1,8 @@
 class Feature < ApplicationRecord
   include ActiveModel::Serializers::JSON
 
+  has_many :comments
+
   def as_json
     {
       'id' => id,

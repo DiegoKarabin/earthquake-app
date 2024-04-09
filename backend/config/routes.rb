@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  get 'features' => 'features#index'
+  scope :api do
+    resources :features, only: [:index] do
+      resources :comments, only: %i[index create]
+    end
+  end
 end

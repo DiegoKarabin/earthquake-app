@@ -16,4 +16,8 @@ module PaginationConcern
         per_page: pagy.items
       }
     end
+
+    def items
+      return DEFAULT_PER_PAGE_ITEMS
+    end
   end
