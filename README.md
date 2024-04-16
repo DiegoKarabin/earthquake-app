@@ -24,6 +24,15 @@ This file already has some environment variables for connect to the database ins
 docker compose up --build
 ```
 
-3. <This is for the execution of the tasks that will fetch the data>
+3. Create and migrate the database
+```bash
+docker exec -it earthquake-app-backend-1 bin/rails db:create
+docker exec -it earthquake-app-backend-1 bin/rails db:migrate
+```
 
-4. Enter to `http://localhost:8080` to see the app.
+4. Excecute the tasks that will fetch the data
+```bash
+docker exec -it earthquake-app-backend-1 bin/rails fetch_data
+```
+
+5. Enter to `http://localhost:8080` to see the app.
