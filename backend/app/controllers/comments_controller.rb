@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   # GET /api/features/:feature_id/comments
   def index
-    @pagy, @comments = pagy(@feature.comments)
+    @pagy, @comments = pagy(@feature.comments.order(created_at: :desc), items: params[:per_page])
 
     render json: { data: @comments, pagination: pagination_info(@pagy) }
   end
